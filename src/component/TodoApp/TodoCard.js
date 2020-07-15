@@ -29,7 +29,7 @@ class TodoCard extends Component {
         return (
             <div className="card customCard" style={{width: 15 + 'rem'}}>
                 <div className="card-body">
-                    <h5> className="card-title">{todo.id}</h5>
+                    <h5 className="card-title">{todo.id}</h5>
                     <textarea
                         className="form-control customTextArea"
                         disabled={true}
