@@ -120,10 +120,12 @@ body {
 .customCard {
   display: inline-flex !important;
   margin: 6px !important;
-
 }
 
 .customTextArea {
   border: none !important;
   resize: none;
+}
+.customColumn-card {
+  max-width: 745px !important;
 }

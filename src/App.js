@@ -1,19 +1,20 @@
 import React from 'react';
 import './App.css';
-import TodoContainer from "./component/TodoApp/TodoContainer";
-import TodoForm from "./component/TodoApp/TodoForm";
-import TodoCard from "./component/TodoApp/TodoCard";
+import UserContainer from "./component/TodoApp/UserContainer";
+import UserInputForm from "./component/TodoApp/UserInputForm";
+import UserCard from "./component/TodoApp/UserCard";
 
 class App extends React.Component {
 
     state = {
-        todoID: 1,
-        todoList: [],
-        status: false,
-        inputStatus: true,
-        createTodo: '',
-        newTodo:''
+        userDetail: [],
+        userEmail:'',
+        userAges:'',
+        userAddress:'',
+        userName:'',
+        status: false
     };
+
     functions = {
         handleChangeInput: (event) => {
             const name = event.target.name;
@@ -22,71 +23,50 @@ class App extends React.Component {
                 [name]: event.target.value,
             });
         },
-        increment: () => {
-            this.setState({
-                number: this.state.number + 1,
-            });
-        },
-        decrement: () => {
-            this.setState({
-                number: this.state.number - 1,
-            });
-        },
-        createData: () => {
-            this.setState({
-                desc: this.state.createTodo,
-            })
-        },
         onAddData: () => {
-            if (this.state.createTodo !== '') {
-                this.state.todoList.push({
-                    id: 'To Do : ' + this.state.todoID,
-                    description: this.state.createTodo
+            if (this.state.userAddress !== '' && this.state.userAges !== '' &&  this.state.userName !== '' &&  this.state.userEmail !== '') {
+                this.state.userDetail.push({
+                    userName: this.state.userName,
+                    userAddress: this.state.userAddress,
+                    userEmail: this.state.userEmail,
+                    userAges: this.state.userAges,
                 });
                 this.setState({
-                    todoList: this.state.todoList,
-                    status: true,
-                    todoID: this.state.todoID + 1,
-                    inputStatus: true,
-                    createTodo: ''
+                    userDetail: this.state.userDetail,
+                    userName: '',
+                    userAddress: '',
+                    userEmail: '',
+                    userAges:'',
+                    status: true
                 });
             } else {
-                alert("What you really wanna do ?")
+                alert("Please ensure your input is not empty")
             }
         },
-
-        onEditData: (index, inID, inDesc) => {
-            let inEdit = this.state.todoList.splice(index, 1, {
-                id: inID,
-                description: inDesc
-            });
-            this.setState({...this.state.todoList, inEdit});
-            alert("Data Succesfully Updated");
-        },
-
-        onDeleteData: (index) => {
-            let delIndex = this.state.todoList.splice(index, 1);
-            this.setState({delIndex});
-        }
     }
 
     render() {
-        console.log('createtodo', this.state.createTodo)
-        const listTodo = this.state.todoList.map((todoList, index) => (
-            <TodoCard
-                todo={todoList}
-                editAccess={this.functions}
-                inputData={this.state.createTodo}
-                index={index}
-                newData = {this.state.newTodo}
+        const userDetail = this.state.userDetail.map((userDetail) => (
+            <UserCard
+                userDetail={userDetail}
+                inputUserName={this.state.userName}
+                inputUserAddress={this.state.userAddress}
+                inputUserAges={this.state.userAges}
+                inputUserEmail={this.state.userEmail}
             />
         ));
         return (
             <div className="App">
-                <TodoContainer>
-                    <TodoForm funcFromApp={this.functions} inputData={this.state.createTodo}/>
-                    {this.state.status === false ? null : listTodo}
-                </TodoContainer>
+                <UserContainer>
+                    <UserInputForm
+                        funcFromApp={this.functions}
+                        inputUserName={this.state.userName}
+                        inputUserAddress={this.state.userAddress}
+                        inputUserAges={this.state.userAges}
+                        inputUserEmail={this.state.userEmail}
+                    />
+                    {this.state.status === false ? null : userDetail}
+                </UserContainer>
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class TodoContainer extends Component {
+class UserContainer extends Component {
     render() {
         return (
             <div className="container">
@@ -8,14 +8,14 @@ class TodoContainer extends Component {
                     <div className="col-lg-10 col-xl-9 mx-auto">
                         <div className="card card-signin flex-row my-5">
                             <div className="card-body">
-                                <h5 className="card-title text-center">To Do Apps</h5>
+                                <h5 className="card-title text-center">User Data App</h5>
                                 {this.props.children[0]}
-                                <div className='toDolist'>
+                                <div className='userData'>
+                                    <div className="card-columns customColumn-card">
                                     {this.props.children[1]}
+                                    </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -24,4 +24,4 @@ class TodoContainer extends Component {
     }
 }
 
-export default TodoContainer;
+export default UserContainer;
