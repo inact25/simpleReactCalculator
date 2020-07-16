@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import UserContainer from "./component/TodoApp/UserContainer";
-import UserInputForm from "./component/TodoApp/UserInputForm";
-import UserCard from "./component/TodoApp/UserCard";
+import UserContainer from "./component/UserData/UserContainer";
+import UserInputForm from "./component/UserData/UserInputForm";
+import UserCard from "./component/UserData/UserCard";
+import swal from "sweetalert";
 
 class App extends React.Component {
 
@@ -39,8 +40,9 @@ class App extends React.Component {
                     userAges:'',
                     status: true
                 });
+                swal("Success", "Data Successfully submited", "success");
             } else {
-                alert("Please ensure your input is not empty")
+                swal ( "Oops" ,  "Please ensure your input is not empty" ,  "error" )
             }
         },
     }
