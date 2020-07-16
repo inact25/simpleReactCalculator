@@ -138,3 +138,27 @@ body {
     width: 100%;
   }
 }
+
+@media (min-width: 576px) {
+  .customContainer {
+    max-width: 540px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .customContainer {
+    max-width: 540px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .customContainer {
+    max-width: 540px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 540px !important;
+  }
+}

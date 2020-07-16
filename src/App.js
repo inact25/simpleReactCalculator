@@ -1,74 +1,60 @@
 import React from 'react';
 import './App.css';
-import UserContainer from "./component/UserData/UserContainer";
-import UserInputForm from "./component/UserData/UserInputForm";
-import UserCard from "./component/UserData/UserCard";
-import swal from "sweetalert";
+import CalcContainer from "./component/Calculator/CalcContainer";
+import CalcButton from "./component/Calculator/CalcButton";
+import CalcForm from "./component/Calculator/CalcForm";
 
 class App extends React.Component {
 
     state = {
-        userDetail: [],
-        userEmail:'',
-        userAges:'',
-        userAddress:'',
-        userName:'',
-        status: false
+       result:''
     };
 
     functions = {
-        handleChangeInput: (event) => {
-            const name = event.target.name;
-            this.setState({
-                ...this.state,
-                [name]: event.target.value,
-            });
-        },
-        onAddData: () => {
-            if (this.state.userAddress !== '' && this.state.userAges !== '' &&  this.state.userName !== '' &&  this.state.userEmail !== '') {
-                this.state.userDetail.push({
-                    userName: this.state.userName,
-                    userAddress: this.state.userAddress,
-                    userEmail: this.state.userEmail,
-                    userAges: this.state.userAges,
-                });
+
+        onClick : (buttonValue) => {
+            if (buttonValue === "=") {
+                try {
+                    this.setState({
+                        // eslint-disable-next-line
+                        result: (eval(this.state.result) || "" ) + ""
+                    })
+                } catch (e) {
+                    this.setState({
+                        result: "error"
+                    })
+                }
+            } else if (buttonValue === "C") {
                 this.setState({
-                    userDetail: this.state.userDetail,
-                    userName: '',
-                    userAddress: '',
-                    userEmail: '',
-                    userAges:'',
-                    status: true
-                });
-                swal("Success", "Data Successfully submited", "success");
+                    result: ''
+                })
+            } else if (buttonValue === "←") {
+                if (this.state.result.length > 1){
+                    this.setState({
+                        result: this.state.result.slice(0, -1)
+                    })
+                } else {
+                    this.setState({
+                        result: ''
+                    })
+                }
             } else {
-                swal ( "Oops" ,  "Please ensure your input is not empty" ,  "error" )
+
+                this.setState({
+                    result: this.state.result + buttonValue
+                })
             }
         },
     }
 
+
     render() {
-        const userDetail = this.state.userDetail.map((userDetail) => (
-            <UserCard
-                userDetail={userDetail}
-                inputUserName={this.state.userName}
-                inputUserAddress={this.state.userAddress}
-                inputUserAges={this.state.userAges}
-                inputUserEmail={this.state.userEmail}
-            />
-        ));
         return (
             <div className="App">
-                <UserContainer>
-                    <UserInputForm
-                        funcFromApp={this.functions}
-                        inputUserName={this.state.userName}
-                        inputUserAddress={this.state.userAddress}
-                        inputUserAges={this.state.userAges}
-                        inputUserEmail={this.state.userEmail}
-                    />
-                    {this.state.status === false ? null : userDetail}
-                </UserContainer>
+                <CalcContainer>
+                    <CalcForm result={this.state.result}/>
+                    <CalcButton funcFromApp={this.functions}/>
+                </CalcContainer>
             </div>
         );
     }
