@@ -11,9 +11,7 @@ class UserContainer extends Component {
                                 <h5 className="card-title text-center">User Data App</h5>
                                 {this.props.children[0]}
                                 <div className='userData'>
-                                    <div className="card-columns customColumn-card">
                                     {this.props.children[1]}
-                                    </div>
                                 </div>
                             </div>
                         </div>

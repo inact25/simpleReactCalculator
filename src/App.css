@@ -120,6 +120,7 @@ body {
 .customCard {
   display: inline-flex !important;
   margin: 6px !important;
+  width: 15rem;
 }
 
 .customTextArea {
