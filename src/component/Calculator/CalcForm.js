@@ -10,9 +10,9 @@ class CalcForm extends Component {
             color: 'white',
             textAlign: 'right',
             padding: 3,
-            borderRadius: 3,
             maxWidth: '330px',
-            minHeight:'65px'
+            minHeight:'65px',
+            boxShadow : '0px 0px 40px #888888'
         }
 
         const calcFormText = {

@@ -7,7 +7,8 @@ import CalcForm from "./component/Calculator/CalcForm";
 class App extends React.Component {
 
     state = {
-       result:''
+       result:'',
+       resultStatus: false
     };
 
     functions = {
@@ -16,8 +17,9 @@ class App extends React.Component {
             if (buttonValue === "=") {
                 try {
                     this.setState({
-                        // eslint-disable-next-line
-                        result: (eval(this.state.result) || "" ) + ""
+                        // eslint-disable-next-line no-eval
+                        result: (eval(this.state.result) || "") + "",
+                        resultStatus: true
                     })
                 } catch (e) {
                     this.setState({
@@ -29,7 +31,7 @@ class App extends React.Component {
                     result: ''
                 })
             } else if (buttonValue === "←") {
-                if (this.state.result.length > 1){
+                if (this.state.result.length > 1) {
                     this.setState({
                         result: this.state.result.slice(0, -1)
                     })
@@ -38,8 +40,12 @@ class App extends React.Component {
                         result: ''
                     })
                 }
-            } else {
+            } else if(buttonValue === "%") {
+                this.setState({
+                    result : this.state.result /100
+                })
 
+        }else {
                 this.setState({
                     result: this.state.result + buttonValue
                 })
