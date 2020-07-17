@@ -10,7 +10,7 @@ class CalcForm extends Component {
             color: 'white',
             textAlign: 'right',
             padding: 3,
-            maxWidth: '330px',
+            maxWidth: '280px',
             minHeight:'65px',
             boxShadow : '0px 0px 40px #888888'
         }
