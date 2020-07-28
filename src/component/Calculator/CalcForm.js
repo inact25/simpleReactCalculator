@@ -10,8 +10,7 @@ class CalcForm extends Component {
             color: 'white',
             textAlign: 'right',
             padding: 3,
-            maxWidth: '280px',
-            minHeight:'65px',
+            minHeight:'75px',
             boxShadow : '0px 0px 40px #888888'
         }
 
@@ -20,7 +19,7 @@ class CalcForm extends Component {
         }
 
         return (
-            <div className='container'>
+            <div>
                 <div style={calcForm}>
                     <h1 style={calcFormText}>{result}</h1>
                 </div>

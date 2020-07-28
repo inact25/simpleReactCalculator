@@ -5,47 +5,41 @@ import CalcButton from "./component/Calculator/CalcButton";
 import CalcForm from "./component/Calculator/CalcForm";
 
 
-
-
-
-
 const App = () => {
 
     const [result, setResult] = useState('');
-    const [status,setStatus] = useState(false);
 
     const onClick = (buttonValue) => {
         if (buttonValue === "=") {
             try {
-                const result = ((eval(this.state.result) || "") + "")
-                setResult(result)
-                setStatus(true)
+                // eslint-disable-next-line no-eval
+                setResult((eval(result) || "") + "")
             } catch (e) {
                 setResult('error')
             }
         } else if (buttonValue === "C") {
             setResult('')
         } else if (buttonValue === "←") {
-            if (this.state.result.length > 1) {
+            if (result.length > 1) {
                 setResult(result.slice(0,-1))
             } else {
                 setResult('')
             }
         } else if(buttonValue === "%") {
-            const result = (result/100).toString()
-            setResult(result)
+            setResult((result/100).toString())
 
         }else {
             setResult(result+buttonValue)
         }
     }
 
+
     return (
         <div>
             <div className="App">
                 <CalcContainer>
                     <CalcForm result={result}/>
-                    <CalcButton funcFromApp={onClick}/>
+                    <CalcButton letCalc={onClick}/>
                 </CalcContainer>
             </div>
             );
