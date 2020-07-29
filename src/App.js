@@ -9,6 +9,7 @@ const App = () => {
 
     const [result, setResult] = useState('');
 
+
     const onClick = (buttonValue) => {
         if (buttonValue === "=") {
             try {
@@ -35,15 +36,12 @@ const App = () => {
 
 
     return (
-        <div>
             <div className="App">
                 <CalcContainer>
                     <CalcForm result={result}/>
                     <CalcButton letCalc={onClick}/>
                 </CalcContainer>
             </div>
-            );
-        </div>
     );
 };
 
