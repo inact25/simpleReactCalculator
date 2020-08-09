@@ -1,5 +1,5 @@
 ## Peoples
-- Demo : https://peoples-285305.web.app/
+- Demo : https://simplereactcalc.web.app/
 
 ### This project built with
 - ReactJS
